@@ -15,17 +15,17 @@ public class Launcher : MonoBehaviourPunCallbacks
     public InputField joinInput;
 
     public Text roomName;
-    public Text playerCount; //*
+    public Text playerCount; 
 
-    public GameObject playerListing; //*
-    public Transform playerListContent; //*
+    public GameObject playerListing; 
+    public Transform playerListContent;
 
-    public Button startButton; //*
+    public Button startButton;
 
     public void Start()
     {
-        menuPanel.SetActive(true); //*
-        roomPanel.SetActive(false); //*
+        menuPanel.SetActive(true);
+        roomPanel.SetActive(false);
         PhotonNetwork.AutomaticallySyncScene = true;
     }
 
@@ -43,14 +43,14 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        menuPanel.SetActive(false); //*
-        roomPanel.SetActive(true); //*
+        menuPanel.SetActive(false); 
+        roomPanel.SetActive(true);
 
-        roomName.text = PhotonNetwork.CurrentRoom.Name;
+        roomName.text = "Room Name: " + PhotonNetwork.CurrentRoom.Name;
 
         Player[] players = PhotonNetwork.PlayerList;
 
-        playerCount.text = "" + players.Length;
+        playerCount.text = "Players: " + players.Length;
 
         for (int i = 0; i < players.Length; i++)
         {
@@ -86,5 +86,4 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LoadLevel("Arena");
     }
-
 }

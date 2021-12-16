@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Photon.Pun;//**
+using Photon.Pun;
 
 public class CameraJoystick : MonoBehaviour
 {
@@ -11,7 +11,6 @@ public class CameraJoystick : MonoBehaviour
     public float camspeed;
     float updown = 0.0f;
 
-    // Update is called once per frame
     void Update()
     {
         float xaxis = joystick2.Horizontal * camspeed * Time.deltaTime;

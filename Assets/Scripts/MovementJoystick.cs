@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Photon.Pun;//**
+using Photon.Pun;
 
 public class MovementJoystick : MonoBehaviour
 {
-    //public AudioSource walkAudio;
     public Joystick joystick;
     public CharacterController player;
     Vector3 movementDirection;
@@ -14,12 +13,6 @@ public class MovementJoystick : MonoBehaviour
     public float speed;
     Vector3 lastPosition = Vector3.zero;
 
-    void Start()
-    {
-        //walkAudio.Play();
-    }
-
-    // Update is called once per frame
     void Update()
     {
         float hori = joystick.Horizontal;
@@ -32,17 +25,6 @@ public class MovementJoystick : MonoBehaviour
         movementDirection.y -= gravity;
 
         player.Move(movementDirection * Time.deltaTime);
-
-        ////audio
-        //if (lastPosition != gameObject.transform.position)
-        //{
-        //    walkAudio.Play();
-        //}
-        //else
-        //{
-        //    walkAudio.Stop();
-        //}
-        //lastPosition = gameObject.transform.position;
 
     }
 }
