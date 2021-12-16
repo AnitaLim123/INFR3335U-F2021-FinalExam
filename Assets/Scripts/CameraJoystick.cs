@@ -1,24 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Photon.Pun;//**
 
 public class CameraJoystick : MonoBehaviour
 {
-    public Transform playerCamera;
-    public Joystick camStick;
-    protected float CameraAngle;
-    protected float CameraAngleSpeed = 2f;
+    public Joystick joystick2;
+    public Transform position;
+    public float camspeed;
+    float updown = 0.0f;
 
-    void Start()
-    {
-        Application.targetFrameRate = 60;
-    }
-
+    // Update is called once per frame
     void Update()
     {
-        CameraAngle += camStick.Horizontal * CameraAngleSpeed;
+        float xaxis = joystick2.Horizontal * camspeed * Time.deltaTime;
+        float yaxis = joystick2.Vertical * camspeed * Time.deltaTime;
 
-        playerCamera.position = transform.position + Quaternion.AngleAxis(CameraAngle, Vector3.up) * new Vector3(0, 3.54f, -9.4f);
-        playerCamera.rotation = Quaternion.LookRotation(transform.position + Vector3.up * 2f - playerCamera.position, Vector3.up);
+        position.Rotate(Vector3.up * xaxis);//camera movement for looking left and right
+        updown -= yaxis;
+        updown = Mathf.Clamp(updown, -90.0f, 90.0f);//clamps for rotation on the x axis so you cant look behind you by moving mouse up or down
+
+        transform.localRotation = Quaternion.Euler(updown, 0.0f, 0.0f);//camera movement for looking up and down
     }
 }
