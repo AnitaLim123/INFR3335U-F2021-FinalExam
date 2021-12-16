@@ -1535,7 +1535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick2: {fileID: 8921851075176178516}
   position: {fileID: 4357327524403217145}
-  camspeed: 0
+  camspeed: 150
 --- !u!1 &5433824924750030607
 GameObject:
   m_ObjectHideFlags: 0
